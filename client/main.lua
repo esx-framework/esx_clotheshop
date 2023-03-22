@@ -99,10 +99,12 @@ AddEventHandler('esx_clotheshop:hasEnteredMarker', function(zone)
 	currentAction     = 'shop_menu'
 	currentActionMsg  = TranslateCap('press_menu')
 	currentActionData = {}
+	ESX.TextUI(currentActionMsg)
 end)
 
 AddEventHandler('esx_clotheshop:hasExitedMarker', function(zone)
 	ESX.CloseContext()
+	ESX.HideUI()
 	currentAction = nil
 
 	if not hasPaid then
@@ -168,7 +170,6 @@ CreateThread(function()
 		Wait(0)
 
 		if currentAction then
-			ESX.ShowHelpNotification(currentActionMsg)
 
 			if IsControlJustReleased(0, 38) then
 				if currentAction == 'shop_menu' then
