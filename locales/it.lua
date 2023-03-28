@@ -7,6 +7,6 @@ Locales['it'] = {
   ['clothes'] = 'Vestiario',
   ['you_paid'] = 'Hai pagato €%s',
   ['save_in_dressing'] = 'Vuoi dare un nome al tuo guardaroba?',
-  ['name_outfit'] = 'nome del costume?',
+  ['name_outfit'] = 'nome dell\' outfit?',
   ['saved_outfit'] = 'L abito è stato salvato!',
 }
