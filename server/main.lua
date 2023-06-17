@@ -19,12 +19,23 @@ AddEventHandler('esx_clotheshop:saveOutfit', function(label, skin)
 	end)
 end)
 
-ESX.RegisterServerCallback('esx_clotheshop:buyClothes', function(source, cb)
+ESX.RegisterServerCallback('esx_clotheshop:buyClothes', function(source, cb, newSkin, oldSkin)
 	local xPlayer = ESX.GetPlayerFromId(source)
+	local purchaseCost = 0
 
-	if xPlayer.getMoney() >= Config.Price then
-		xPlayer.removeMoney(Config.Price, "Outfit Purchase")
-		TriggerClientEvent('esx:showNotification', source, TranslateCap('you_paid', Config.Price))
+	if(Config.ChargePerPiece) then
+		for key,value in pairs(Config.SkinProps) do
+			if (newSkin[value .. '_1'] ~= oldSkin[value .. '_1']) or (newSkin[value .. '_2'] ~= oldSkin[value .. '_2']) then
+				purchaseCost = purchaseCost + Config.Price
+			end
+		end
+	else
+		purchaseCost = Config.Price
+	end
+
+	if xPlayer.getMoney() >= purchaseCost then
+		xPlayer.removeMoney(purchaseCost, "Outfit Purchase")
+		TriggerClientEvent('esx:showNotification', source, TranslateCap('you_paid', purchaseCost))
 		cb(true)
 	else
 		cb(false)

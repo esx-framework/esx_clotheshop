@@ -1,10 +1,11 @@
 
 local hasAlreadyEnteredMarker, hasPaid, currentActionData = false, false, {}
 local lastZone, currentAction, currentActionMsg
+local oldSkin, newSkin
 
 function OpenShopMenu()
 	hasPaid = false
-
+	TriggerEvent('skinchanger:getSkin', function(skin) oldSkin = skin end)
 	TriggerEvent('esx_skin:openRestrictedMenu', function(data, menu)
 		menu.close()
 
@@ -16,6 +17,7 @@ function OpenShopMenu()
 
 		ESX.OpenContext("right", elements, function(menu,element)
 			if element.value == "yes" then
+				TriggerEvent('skinchanger:getSkin', function(skin) newSkin = skin end)
 				ESX.TriggerServerCallback('esx_clotheshop:buyClothes', function(bought)
 					if bought then
 						TriggerEvent('skinchanger:getSkin', function(skin)
@@ -59,7 +61,7 @@ function OpenShopMenu()
 						end)
 						ESX.ShowNotification(TranslateCap('not_enough_money'))
 					end
-				end)
+				end, newSkin, oldSkin)
 			elseif element.value == "no" then
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
 					TriggerEvent('skinchanger:loadSkin', skin)
@@ -91,7 +93,8 @@ function OpenShopMenu()
         'bags_1', 'bags_2',
 		'chain_1', 'chain_2',
 		'helmet_1', 'helmet_2',
-		'glasses_1', 'glasses_2'
+		'glasses_1', 'glasses_2',
+		'watches_1', 'watches_2'
 	})
 end
 

@@ -2,6 +2,7 @@ Config = {}
 Config.Locale = GetConvar('esx:locale', 'en')
 
 Config.Price = 250
+Config.ChargePerPiece = false
 
 Config.DrawDistance = 10.0
 Config.MarkerSize   = {x = 1.5, y = 1.5, z = 1.0}
@@ -23,4 +24,10 @@ Config.Shops = {
 	vector3(-1193.4, -772.3, 16.3),
 	vector3(-3172.5, 1048.1, 19.9),
 	vector3(-1108.4, 2708.9, 18.1)
+}
+
+Config.SkinProps = {
+	'tshirt','torso', 'decals', 'arms', 'pants',
+	'shoes', 'bags', 'chain', 'helmet', 'glasses',
+	'watches'
 }
