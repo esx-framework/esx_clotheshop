@@ -1,9 +1,9 @@
-
 local hasAlreadyEnteredMarker, hasPaid, currentActionData = false, false, {}
 local lastZone, currentAction, currentActionMsg
 local oldSkin, newSkin
 
 function OpenShopMenu()
+	ESX.HideUI()
 	hasPaid = false
 	TriggerEvent('skinchanger:getSkin', function(skin) oldSkin = skin end)
 	TriggerEvent('esx_skin:openRestrictedMenu', function(data, menu)
@@ -47,10 +47,14 @@ function OpenShopMenu()
 												TriggerServerEvent('esx_clotheshop:saveOutfit', menu3.eles[2].inputValue, skin)
 												ESX.ShowNotification(TranslateCap('saved_outfit'))
 											end)
+										end, function()
+											hasAlreadyEnteredMarker = false 
 										end)
 									elseif element2.value == "no" then
 										ESX.CloseContext()
 									end
+								end, function()
+									hasAlreadyEnteredMarker = false 
 								end)
 							end
 						end)
@@ -72,6 +76,7 @@ function OpenShopMenu()
 			currentActionMsg  = TranslateCap('press_menu')
 			currentActionData = {}
 		end, function(menu)
+			hasAlreadyEnteredMarker = false
 			currentAction     = 'shop_menu'
 			currentActionMsg  = TranslateCap('press_menu')
 			currentActionData = {}
@@ -79,7 +84,7 @@ function OpenShopMenu()
 
 	end, function(data, menu)
 		menu.close()
-
+		hasAlreadyEnteredMarker = false 
 		currentAction     = 'shop_menu'
 		currentActionMsg  = TranslateCap('press_menu')
 		currentActionData = {}
