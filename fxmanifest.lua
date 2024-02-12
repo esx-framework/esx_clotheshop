@@ -2,7 +2,7 @@ fx_version 'adamant'
 
 game 'gta5'
 
-description 'ESX Clothes Shop'
+description 'Adds the ability to customise your clothing'
 
 version '1.0'
 legacyversion '1.9.1'
