@@ -9,4 +9,7 @@ Locales['en'] = {
   ['save_in_dressing'] = 'do you want to save the outfit in your property?',
   ['name_outfit'] = 'name your outfit',
   ['saved_outfit'] = 'the outfit has been saved!',
+  ['outfit_name'] = 'Outfit Name',
+  ['outfit_placeholder'] = 'Outfit name in wardrobe..',
+  ['confirm'] = 'Confirm'
 }

@@ -37,8 +37,8 @@ function OpenShopMenu()
 									if element2.value == "yes" then
 										local elements3 = {
 											{unselectable = true, icon = "fas fa-shirt", title = TranslateCap('name_outfit')},
-											{title = "Outfit Name", input = true, inputType = "text", inputPlaceholder = "Outfit name in wardrobe.."},
-											{icon = "fas fa-check-circle", title = "Confirm", value = "confirm"}
+											{title = TranslateCap('outfit_name'), input = true, inputType = "text", inputPlaceholder = TranslateCap('outfit_placeholder')},
+											{icon = "fas fa-check-circle", title = TranslateCap('confirm'), value = "confirm"}
 										}
 
 										ESX.OpenContext("right", elements3, function(menu3,element3)
